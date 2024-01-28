@@ -1,23 +1,23 @@
 import { Button, Center, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react'
+import axios from 'axios'
 import { Field, Formik } from 'formik'
 import { useNavigate } from 'react-router-dom'
 
 const index = (): React.ReactNode => {
   const navigate = useNavigate()
-  const onSubmit = async (value): void => {
+  const onSubmit = async (value): Promise<void> => {
     try {
-
+      const { data } = await axios.get('/noti-login', {
+        params: value
+      })
+      localStorage.setItem('token', data.token)
       navigate('/dashboard')
     } catch (err) {
       console.log(err)
     }
   }
   return (
-    // <Flex bg='gray.100' align='center' w={'full'} p={4} justify='center' h='100vh'>
     <Center h={'100vh'} p={2} flexDirection={'column'}>
-      {/* <Box mb={2} p={4} color={'teal'} fontSize={32} bg={'teal.200'} rounded={'full'}>
-        <HiLockClosed />
-      </Box> */}
       <Formik
         initialValues={{
           userId: '',

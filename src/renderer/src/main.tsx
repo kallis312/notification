@@ -4,12 +4,14 @@ import {
   extendBaseTheme,
   type ThemeConfig
 } from '@chakra-ui/react'
+import axios from 'axios'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './assets/index.css'
-import React from 'react'
 
 const { Button, Input } = chakraTheme.components
+axios.defaults.baseURL = 'http://192.168.143.55:6005/api/v1'
+axios.defaults.headers.common['']
 
 const theme: ThemeConfig = extendBaseTheme({
   styles: {
@@ -26,9 +28,7 @@ const theme: ThemeConfig = extendBaseTheme({
 })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <ChakraBaseProvider theme={theme}>
-      <App />
-    </ChakraBaseProvider>
-  </React.StrictMode>
+  <ChakraBaseProvider theme={theme}>
+    <App />
+  </ChakraBaseProvider>
 )
