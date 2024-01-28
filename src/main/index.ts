@@ -22,7 +22,7 @@ function createWindow(): void {
       skipTaskbar: true,
       x: width - 150,
       y: height - 200,
-      // movable: false,
+      movable: false,
       maximizable: false,
       minimizable: false,
       title: 'HR Notification',

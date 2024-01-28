@@ -3,11 +3,11 @@ import {
   theme as chakraTheme,
   extendBaseTheme,
   type ThemeConfig
-} from '@chakra-ui/react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-import './assets/index.css';
-import React from 'react';
+} from '@chakra-ui/react'
+import ReactDOM from 'react-dom/client'
+import App from './App'
+import './assets/index.css'
+import React from 'react'
 
 const { Button, Input } = chakraTheme.components
 
@@ -17,11 +17,12 @@ const theme: ThemeConfig = extendBaseTheme({
       body: {
         bg: 'none'
       }
-    }),
+    })
   },
   components: {
-    Button, Input
-  },
+    Button,
+    Input
+  }
 })
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(

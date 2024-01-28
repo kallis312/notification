@@ -1,35 +1,33 @@
-import {
-  Button,
-  Center,
-  FormControl,
-  FormLabel,
-  Input,
-  VStack
-} from "@chakra-ui/react";
-import { Field, Formik } from "formik";
-import { useNavigate } from "react-router-dom";
+import { Button, Center, FormControl, FormLabel, Input, VStack } from '@chakra-ui/react'
+import { Field, Formik } from 'formik'
+import { useNavigate } from 'react-router-dom'
 
-const index = () => {
+const index = (): React.ReactNode => {
   const navigate = useNavigate()
+  const onSubmit = async (value): void => {
+    try {
+
+      navigate('/dashboard')
+    } catch (err) {
+      console.log(err)
+    }
+  }
   return (
-    // <Flex bg="gray.100" align="center" w={'full'} p={4} justify="center" h="100vh">
+    // <Flex bg='gray.100' align='center' w={'full'} p={4} justify='center' h='100vh'>
     <Center h={'100vh'} p={2} flexDirection={'column'}>
       {/* <Box mb={2} p={4} color={'teal'} fontSize={32} bg={'teal.200'} rounded={'full'}>
         <HiLockClosed />
       </Box> */}
       <Formik
         initialValues={{
-          userId: "",
-          password: ""
+          userId: '',
+          password: ''
         }}
-        onSubmit={(values) => {
-          navigate('/dashboard')
-          alert(JSON.stringify(values, null, 2));
-        }}
+        onSubmit={onSubmit}
       >
         {({ handleSubmit, errors, touched }) => (
           <form onSubmit={handleSubmit}>
-            <VStack align="flex-start" >
+            <VStack align="flex-start">
               <FormControl isInvalid={!!errors.userId && touched.userId}>
                 <FormLabel htmlFor="userId">UserId</FormLabel>
                 <Field
@@ -38,7 +36,9 @@ const index = () => {
                   id="userId"
                   name="userId"
                   type="userId"
-                  validate={(value) => value.length < 3 ? "Password must contain at least 3 characters" : undefined}
+                  validate={(value) =>
+                    value.length < 3 ? 'Password must contain at least 3 characters' : undefined
+                  }
                 />
                 {/* <FormErrorMessage>{errors.userId}</FormErrorMessage> */}
               </FormControl>
@@ -50,7 +50,9 @@ const index = () => {
                   id="password"
                   name="password"
                   type="password"
-                  validate={(value) => value.length < 6 ? "Password must contain at least 6 characters" : undefined}
+                  validate={(value) =>
+                    value.length < 6 ? 'Password must contain at least 6 characters' : undefined
+                  }
                 />
                 {/* <FormErrorMessage>{errors.password}</FormErrorMessage> */}
               </FormControl>
@@ -63,7 +65,7 @@ const index = () => {
       </Formik>
     </Center>
     // </Flex>
-  );
+  )
 }
 
 export default index
